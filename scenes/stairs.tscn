@@ -9,13 +9,15 @@ collision_mask = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1
+scale = Vector2(1, 0.5)
 texture = ExtResource("1_tpqne")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(128, 0)
+scale = Vector2(1, 0.5)
 texture = ExtResource("2_qpode")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-visible = false
+scale = Vector2(1, 0.5)
 polygon = PackedVector2Array(-64, 64, 64, -64, 64, 64)
