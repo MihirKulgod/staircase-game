@@ -30,7 +30,7 @@ func _physics_process(delta):
 	# Move and slide with slope handling
 	move_and_slide()
 	
-	if global_position.x >= next_spawn_x - segment_interval:
+	if global_position.x >= next_spawn_x - 1024:
 		_spawn_segment()
 		next_spawn_x += segment_interval   # Move the trigger to the next multiple
 
