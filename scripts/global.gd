@@ -22,3 +22,8 @@ func _input(event):
 
 func y(x):
 	return -1 * x
+
+func pause_game_for(duration: float) -> void:
+	get_tree().paused = true
+	await get_tree().create_timer(duration, Node.PROCESS_MODE_ALWAYS).timeout
+	get_tree().paused = false

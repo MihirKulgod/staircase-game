@@ -1,7 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://rx7vofhunglk"]
+[gd_scene load_steps=30 format=3 uid="uid://rx7vofhunglk"]
 
 [ext_resource type="Texture2D" uid="uid://dhy2jqordoich" path="res://assets/textures/player.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://v7u8x12wouwg" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="AudioStream" uid="uid://5xix0066ykr6" path="res://assets/sounds/music.wav" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://r184q0d8nc03" path="res://scripts/music.gd" id="4_dqkch"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qfm1y"]
 atlas = ExtResource("1_3vyb7")
@@ -102,7 +104,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"dive",
-"speed": 20.0
+"speed": 28.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -181,7 +183,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
-size = Vector2(4, 12)
+size = Vector2(4, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(6, 9)
@@ -189,16 +191,15 @@ size = Vector2(6, 9)
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 6
 script = ExtResource("1_g2els")
-slam_power = 15.0
+gravity = 1250.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tuyoq")
-animation = &"run"
+animation = &"dive"
 autoplay = "run"
-frame_progress = 0.39550152
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
+position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_g2els")
 debug_color = Color(0.9689304, 0, 0.46777612, 0.41960785)
 
@@ -209,5 +210,17 @@ collision_mask = 2
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_qhqgy")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+visible = false
+stream = ExtResource("3_qhqgy")
+volume_db = -3.817
+autoplay = true
+max_distance = 1000000000.0
+attenuation = 1e-05
+panning_strength = 0.0
+script = ExtResource("4_dqkch")
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="anim_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="hurtbox_collision"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="AudioStreamPlayer2D" method="_on_finished"]

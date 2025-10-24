@@ -3,9 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bur77i72s85ws" path="res://assets/textures/stairs.png" id="1_tpqne"]
 [ext_resource type="Texture2D" uid="uid://bkcq1ogx2b8ee" path="res://assets/textures/stairblock.png" id="2_qpode"]
 
-[node name="Stairs" type="StaticBody2D"]
-collision_layer = 4
-collision_mask = 3
+[node name="Stairs" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1
@@ -17,7 +15,3 @@ z_index = -1
 position = Vector2(320, 0)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_qpode")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-scale = Vector2(1, 0.5)
-polygon = PackedVector2Array(-64, 64, 64, -64, 64, 64)

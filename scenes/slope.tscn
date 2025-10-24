@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://det7gdq8t3k2s"]
+
+[node name="Slope" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-64, 32, 1280000, -640000, 576, -64, 576, 64)

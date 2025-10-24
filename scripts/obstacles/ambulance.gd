@@ -1,8 +1,13 @@
 extends RigidObstacle
 
+var type := 0
+@onready var anim := $AnimatedSprite2D
+
 func init():
-	rotation = randf_range(0, -PI/6)
-	
+	rotation = -PI/6
 	var mat = physics_material_override
-	mat.friction = randf_range(0.0, 1.0)
-	mat.bounce   = randf_range(0.0, 1.0) ** 3
+	mat.friction = 0
+	mat.bounce   = 0
+	gravity_scale = 0.7
+	
+	spawn_arrow(Color(0.788, 0.0, 0.0, 1.0))

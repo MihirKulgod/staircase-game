@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0r55n47cusc2"]
+
+[ext_resource type="Script" uid="uid://dgjqvniqr3ewc" path="res://scripts/obstacles/blue_ambulance.gd" id="1_4vhs5"]
+[ext_resource type="Texture2D" uid="uid://b2xwuv1t84fsp" path="res://assets/textures/obstacles/blue_ambulance.png" id="2_8kpg2"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8cca3"]
+friction = 0.0
+rough = true
+bounce = 0.5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n085x"]
+atlas = ExtResource("2_8kpg2")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkutq"]
+atlas = ExtResource("2_8kpg2")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6k7lr"]
+atlas = ExtResource("2_8kpg2")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n085x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n085x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkutq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6k7lr")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 5.0
+}]
+
+[node name="Ambulance" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 5
+collision_priority = 10000.0
+mass = 0.001
+physics_material_override = SubResource("PhysicsMaterial_8cca3")
+gravity_scale = 0.2
+center_of_mass_mode = 1
+center_of_mass = Vector2(15, 0)
+angular_damp = 91.67
+script = ExtResource("1_4vhs5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_n085x")
+animation = &"blue"
+autoplay = "blue"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(23, 12, 18, 12, 17, 16, 13, 16, -10, 16, -14, 16, -15, 12, -24, 10, -24, 7, -7, -9, 19, -9)

@@ -13,7 +13,7 @@ config_version=5
 config/name="Stairway to Heaven"
 run/main_scene="uid://dhix8bupevcrc"
 config/features=PackedStringArray("4.5", "Mobile")
-config/icon="res://icon.svg"
+config/icon="uid://dgnfvajjuhj1y"
 
 [autoload]
 
@@ -49,3 +49,4 @@ Space={
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
