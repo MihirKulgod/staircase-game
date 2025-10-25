@@ -29,8 +29,7 @@ camera_offset = Vector2(60, 0)
 [node name="Player" parent="." instance=ExtResource("1_0wfyh")]
 z_index = 100
 position = Vector2(0, 19)
-jump_power = 32.0
-slam_power = 20.0
+jumpHeight = 30.0
 segment_scene = ExtResource("3_sugp2")
 
 [node name="Stairs2" parent="." instance=ExtResource("3_sugp2")]
